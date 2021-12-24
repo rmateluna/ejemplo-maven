@@ -7,24 +7,31 @@ pipeline {
     agent any
     stages {
 
-        stage("Compilar"){
+        stage("paso 1"){
             steps {
                 script {
-                sh "./mvnw clean compile -e"
+                sh "echo 'Hello, World Usach 2021!'"
                 }
             }
         }
-        stage("Test"){
+        stage("paso 2"){
             steps {
                 script {
-                sh "./mvnw.cmd clean test -e"
+                sh "echo 'Compile Code!'"
                 }
             }
         }
-        stage("Package"){
+        stage("paso 3"){
             steps {
                 script {
-                sh "./mvnw clean package -e'"
+                sh "echo 'Test Code!'"
+                }
+            }
+        }
+        stage("paso "){
+            steps {
+                script {
+                sh "echo 'Build .Jar!'"
                 }
             }
         }
