@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        stage("paso "){
+        stage("paso 4"){
             steps {
                 script {
                 sh "echo 'Build .Jar!'"
