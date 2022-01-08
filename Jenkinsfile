@@ -44,7 +44,7 @@ pipeline {
             sh "echo 'fase always executed post'"
         }
         success {
-            sh "echo 'fase success 3'"
+            sh "echo 'fase success 4'"
         }
         failure {
             sh "echo 'fase failure'"
