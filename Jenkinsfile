@@ -41,10 +41,10 @@ pipeline {
     }
     post {
         always {
-            sh "echo 'fase always executed post'"
+            sh "echo 'fase always executed post 2'"
         }
         success {
-            sh "echo 'fase success 4'"
+            sh "echo 'fase success'"
         }
         failure {
             sh "echo 'fase failure'"
