@@ -11,7 +11,11 @@
 	<groupId>com.devopsusach2020</groupId>
 	<artifactId>DevOpsUsach2020</artifactId>
 	<version>0.0.1</version>
+<<<<<<< Updated upstream
 	<name>maven-ejemplo-sec3-pom</name>
+=======
+	<name>DevOpsUsach2020 T7</name>
+>>>>>>> Stashed changes
 	<description>Proyecto de ejemplo para el desarrollo del diplomado DevOps Universidad de Santiago de Chile 2020</description>
 
 	<properties>

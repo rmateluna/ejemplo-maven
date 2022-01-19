@@ -13,10 +13,18 @@ class DevOpsUsach2020ApplicationTests {
         Assertions.assertThat(correcto).isEqualTo("hola");
 	}
 
+<<<<<<< Updated upstream
     @Test
+=======
+	@Test
+>>>>>>> Stashed changes
 	void contextLoads1() {
 		String correcto = "hola";
         Assertions.assertThat(correcto).isEqualTo("hola");
 	}
+<<<<<<< Updated upstream
 
 }
+=======
+}
+>>>>>>> Stashed changes
