@@ -43,8 +43,23 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                     sh "echo 'Calling sonar Service in another docker container!'"
                     // Run Maven on a Unix agent to execute Sonar.
-                    sh 'mvn clean verify sonar:sonar  -Dsonar.projectKey=sonar-github'
+                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=sonar-github'
                 }
+            }
+        }
+        stage("Paso 5: Levantar Springboot APP"){
+            steps {
+                sh 'mvn spring-boot:run &'
+            }
+        }
+        stage("Paso 6: Dormir(Esperar 10sg) "){
+            steps {
+                sh 'sleep 10'
+            }
+        }
+        stage("Paso 7: Test Alive Service - Testing Application!"){
+            steps {
+                sh 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
             }
         }
     }
@@ -60,3 +75,4 @@ pipeline {
         }
     }
 }
+Cont
