@@ -52,9 +52,9 @@ pipeline {
                 sh 'mvn spring-boot:run &'
             }
         }
-        stage("Paso 6: Dormir(Esperar 70 seg) "){
+        stage("Paso 6: Dormir(Esperar 80 seg) "){
             steps {
-                sh 'sleep 70'
+                sh 'sleep 80'
             }
         }
         stage("Paso 7: Test Alive Service - Testing Application!"){
