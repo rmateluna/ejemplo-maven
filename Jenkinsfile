@@ -51,9 +51,20 @@ pipeline {
                 }
             }
         }
+        stage('Subir Nexus Stage 0.0.1') {
+            steps {
+                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'devops-usach-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/job-integracion-3/build/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]
+            }
+        }
+        stage('Bajar Nexus Stage'){
+            steps {
+                sh 'curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD http://nexus:8081/repository/test-nexus/http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar -O'
+            }
+        }
         stage("Paso 5: Levantar Springboot APP"){
             steps {
-                sh 'mvn spring-boot:run &'
+                sh "echo 'fase ejecutar'"
+                sh 'nohup java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
             }
         }
         stage("Paso 6: Dormir(Esperar 90 seg) "){
@@ -66,14 +77,9 @@ pipeline {
                 sh 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
             }
         }
-        stage('Subir Nexus Stage') {
+         stage('Subir Nexus Stage 1.0.0') {
             steps {
-                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'devops-usach-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/job-integracion-3/build/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.4']]]
-            }
-        }
-        stage('Bajar Nexus Stage'){
-            steps {
-                sh 'curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD http://nexus:8081/repository/test-nexus/http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.4/DevOpsUsach2020-0.0.4.jar -O'
+                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'devops-usach-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/job-integracion-3/build/DevOpsUsach2020-1.0.0.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]
             }
         }
     }
