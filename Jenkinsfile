@@ -66,7 +66,7 @@ pipeline {
                                 mavenAssetList: [[
                                     classifier: '', 
                                     extension: 'jar', 
-                                    filePath: 'build/libs/DevOpsUsach2020-0.0.1.jar']], 
+                                    filePath: 'build/DevOpsUsach2020-0.0.1.jar']], 
                                 mavenCoordinate: [
                                     artifactId: 'DevOpsUsach2020', 
                                     groupId: 'com.devopsusach2020', 
@@ -78,7 +78,7 @@ pipeline {
             steps {
                 sh "echo 'fase success'"
                 sh "pwd"
-                sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus:8081/repository/devops-usach/com/devopsusach2020/DevOpsUsach2020/0.0.3/DevOpsUsach2020-0.0.3.jar" -O'
+                sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus:8081/repository/devops-usach/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar" -O'
                 sh "ls -l"
             }
         }
