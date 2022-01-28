@@ -6,8 +6,8 @@ def jsonParse(def json) {
 pipeline {
     agent any
     environment {
-        NEXUS_USER         = credentials('nexus-user')
-        NEXUS_PASSWORD     = credentials('nexus-password')
+        NEXUS_USER         = credentials('nexus-user-rm')
+        NEXUS_PASSWORD     = credentials('nexus-password-rm')
     }
     stages {
         stage('Paso 1: Compliar') {
@@ -56,21 +56,32 @@ pipeline {
 
         stage('Paso 5: Subir a Nexus') {
             steps {
-            sh 'ls '
-            sh 'ls build'
                 //archiveArtifacts artifacts:'build/*.jar'
-                nexusPublisher nexusInstanceId: 'nexus',
-                            nexusRepositoryId: 'maven-nexus-repo', 
+                /*nexusPublisher nexusInstanceId: 'nexus',
+                            nexusRepositoryId: 'maven-nexus-repo',
                             packages: [[
-                                $class: 'MavenPackage', 
+                                $class: 'MavenPackage',
                                 mavenAssetList: [[
-                                    classifier: '', 
-                                    extension: 'jar', 
-                                    filePath: 'build/DevOpsUsach2020-0.0.1.jar']], 
+                                    classifier: '',
+                                    extension: 'jar',
+                                    filePath: 'build/DevOpsUsach2020-0.0.1.jar']],
                                 mavenCoordinate: [
-                                    artifactId: 'DevOpsUsach2020', 
-                                    groupId: 'com.devopsusach2020', 
-                                    packaging: 'jar', 
+                                    artifactId: 'DevOpsUsach2020',
+                                    groupId: 'com.devopsusach2020',
+                                    packaging: 'jar',
+                                    version: '0.0.1']]]*/
+                nexusPublisher nexusInstanceId: 'nexus',
+                            nexusRepositoryId: 'grupo-4',
+                            packages: [[
+                                $class: 'MavenPackage',
+                                mavenAssetList: [[
+                                    classifier: '',
+                                    extension: 'jar',
+                                    filePath: 'build/DevOpsUsach2020-0.0.1.jar']],
+                                mavenCoordinate: [
+                                    artifactId: 'DevOpsUsach2020',
+                                    groupId: 'com.devopsusach2020',
+                                    packaging: 'jar',
                                     version: '0.0.1']]]
             }
         }
