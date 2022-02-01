@@ -71,12 +71,12 @@ pipeline {
                                     packaging: 'jar',
                                     version: '0.0.1']]]*/
                 nexusPublisher nexusInstanceId: 'nexus',
-                            nexusRepositoryId: 'grupo-4',
+                            nexusRepositoryId: 'maven-nexus-repo',
                             packages: [[
                                 $class: 'MavenPackage',
                                 mavenAssetList: [[
                                     classifier: '',
-                                    extension: 'jar',
+                                    extension: '.jar',
                                     filePath: 'build/DevOpsUsach2020-0.0.1.jar']],
                                 mavenCoordinate: [
                                     artifactId: 'DevOpsUsach2020',
