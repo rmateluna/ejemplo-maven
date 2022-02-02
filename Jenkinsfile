@@ -16,6 +16,9 @@ pipeline {
                     sh "echo 'Compile Code!'"
                     // Run Maven on a Unix agent.
                     sh 'mvn clean compile -e'
+                    if (fileExists('pom.xml')) {
+                        sh  'echo "Es Maven"'
+                    }
                 }
             }
         }
