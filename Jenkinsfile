@@ -14,6 +14,8 @@ pipeline {
             steps {
                 script {
                     sh "echo 'Compile Code!'"
+                    
+                    println env.GIT_BRANCH
                     // Run Maven on a Unix agent.
                     sh 'mvn clean compile -e'
                     if (fileExists('pom.xml')) {
